@@ -62,8 +62,11 @@ Cookies/session data are stored on disk under Electron `userData`, so login surv
 
 ## Build (Linux AppImage)
 
+Before build don't forget to change the desktop's name in `package.json`
+
 ```bash
 npm run make
+sudo apt install ./dist/*.deb
 ```
 
 This uses `electron-builder` and outputs an AppImage in `dist/`.

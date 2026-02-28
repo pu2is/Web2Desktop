@@ -1,5 +1,9 @@
 {
-  "name": "web2desktop",
+  "author": {
+    "name": "baz405",
+    "email": "foo.425.123@gmail.com"
+  },
+  "name": "chatgpt",
   "version": "0.1.0",
   "description": "Minimal, auditable Electron desktop shell for a web app URL",
   "main": "main.js",
@@ -11,15 +15,20 @@
   "scripts": {
     "start": "electron .",
     "lint": "echo \"No lint configured\"",
-    "make": "electron-builder --linux AppImage"
+    "make": "electron-builder --linux deb",
+    "make:appimage": "electron-builder --linux AppImage",
+    "make:dir": "electron-builder --linux dir"
   },
   "devDependencies": {
     "electron": "^30.0.0",
     "electron-builder": "^24.13.3"
   },
   "build": {
-    "appId": "com.web2desktop.shell",
-    "productName": "Web2Desktop",
+    "appId": "com.chatgpt.shell",
+    "productName": "ChatGPT",
+    "directories": {
+      "buildResources": "assets"
+    },
     "files": [
       "main.js",
       "package.json",
@@ -27,8 +36,10 @@
     ],
     "linux": {
       "target": [
-        "AppImage"
+        "AppImage",
+        "deb"
       ],
+      "icon": "icons",
       "category": "Utility"
     }
   }
