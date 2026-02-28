@@ -1,0 +1,35 @@
+{
+  "name": "web2desktop",
+  "version": "0.1.0",
+  "description": "Minimal, auditable Electron desktop shell for a web app URL",
+  "main": "main.js",
+  "private": true,
+  "license": "MIT",
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "start": "electron .",
+    "lint": "echo \"No lint configured\"",
+    "make": "electron-builder --linux AppImage"
+  },
+  "devDependencies": {
+    "electron": "^30.0.0",
+    "electron-builder": "^24.13.3"
+  },
+  "build": {
+    "appId": "com.web2desktop.shell",
+    "productName": "Web2Desktop",
+    "files": [
+      "main.js",
+      "package.json",
+      "README.md"
+    ],
+    "linux": {
+      "target": [
+        "AppImage"
+      ],
+      "category": "Utility"
+    }
+  }
+}
