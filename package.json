@@ -3,7 +3,7 @@
     "name": "baz405",
     "email": "foo.425.123@gmail.com"
   },
-  "name": "chatgpt",
+  "name": "notebooklm",
   "version": "0.1.0",
   "description": "Minimal, auditable Electron desktop shell for a web app URL",
   "main": "main.js",
@@ -15,17 +15,19 @@
   "scripts": {
     "start": "electron .",
     "lint": "echo \"No lint configured\"",
-    "make": "electron-builder --linux deb",
-    "make:appimage": "electron-builder --linux AppImage",
-    "make:dir": "electron-builder --linux dir"
+    "prepare:linux-icons": "mkdir -p ./assets/icons && for s in 16 24 32 48 64 128 256 512 1024; do cp ./assets/icon.png ./assets/icons/${s}x${s}.png; done",
+    "make": "npm run prepare:linux-icons && electron-builder --linux deb",
+    "make:exe": "electron-builder --win nsis --x64",
+    "make:appimage": "npm run prepare:linux-icons && electron-builder --linux AppImage",
+    "make:dir": "npm run prepare:linux-icons && electron-builder --linux dir"
   },
   "devDependencies": {
     "electron": "^30.0.0",
     "electron-builder": "^24.13.3"
   },
   "build": {
-    "appId": "com.chatgpt.shell",
-    "productName": "ChatGPT",
+    "appId": "com.notebooklm.shell",
+    "productName": "NotebookLM",
     "directories": {
       "buildResources": "assets"
     },
@@ -41,6 +43,23 @@
       ],
       "icon": "icons",
       "category": "Utility"
+    },
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        }
+      ],
+      "icon": "icon.png"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true
     }
   }
 }
