@@ -3,7 +3,7 @@
     "name": "baz405",
     "email": "foo.425.123@gmail.com"
   },
-  "name": "notebooklm",
+  "name": "web2desktop",
   "version": "0.1.0",
   "description": "Minimal, auditable Electron desktop shell for a web app URL",
   "main": "main.js",
@@ -26,8 +26,8 @@
     "electron-builder": "^24.13.3"
   },
   "build": {
-    "appId": "com.notebooklm.shell",
-    "productName": "NotebookLM",
+    "appId": "com.web2desktop.shell",
+    "productName": "Web2Desktop",
     "directories": {
       "buildResources": "assets"
     },

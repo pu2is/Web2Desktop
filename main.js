@@ -2,7 +2,7 @@
 
 const { app, BrowserWindow, shell } = require('electron');
 
-const DEFAULT_TARGET_URL = 'https://notebooklm.google.com/';
+const DEFAULT_TARGET_URL = 'https://example.com/';
 const PERSISTENT_PARTITION = 'persist:web2desktop';
 
 function readCliTargetUrl(argv) {

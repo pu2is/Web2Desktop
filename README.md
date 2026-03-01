@@ -5,7 +5,7 @@ Minimal, auditable Electron shell that opens a web app URL in a desktop window.
 ## What This Is
 
 This project is a clean Electron wrapper around a configurable `targetUrl`.
-Default URL: `https://chatgpt.com`
+Default URL: `https://example.com`
 
 No React UI is used. The app only creates one `BrowserWindow` and loads the target site.
 
@@ -27,12 +27,12 @@ Resolution order (highest to lowest priority):
 
 1. CLI argument `--targetUrl=...`
 2. Environment variable `TARGET_URL`
-3. Default: `https://chatgpt.com`
+3. Default: `https://example.com`
 
 Examples:
 
 ```bash
-# Uses default https://chatgpt.com
+# Uses default https://example.com
 npm run start
 
 # Uses env var
@@ -60,13 +60,19 @@ Implemented in `main.js`:
 The window uses a persistent Electron partition: `persist:web2desktop`.
 Cookies/session data are stored on disk under Electron `userData`, so login survives app restarts.
 
-## Build (Linux AppImage)
+## Build
 
-Before build don't forget to change the desktop's name in `package.json`
+Before build don't forget to change the desktop's `name`, `build.appId`, `build.productName` in `package.json`.
+Relpace the `/assets/icon.png` to your own `icon.png`
 
+1. Linux: create `.deb`
 ```bash
 npm run make
 sudo apt install ./dist/*.deb
 ```
 
-This uses `electron-builder` and outputs an AppImage in `dist/`.
+2. Windows: create `.exe`
+
+```bash
+npm run make:exe
+```
