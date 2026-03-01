@@ -42,6 +42,31 @@ TARGET_URL=https://example.com npm run start
 TARGET_URL=https://example.com npm run start -- --targetUrl=https://news.ycombinator.com
 ```
 
+
+## Build as desktop
+
+Before build don't forget to change the desktop's `name`, `build.appId`, `build.productName` in `package.json`.
+Relpace the `/assets/icon.png` to your own `icon.png`
+
+1. Linux: create `.deb`
+```bash
+npm run make
+sudo apt install ./dist/*.deb
+```
+
+2. Windows: create `.exe`
+
+- Windows Settings -> System -> For Developer or you can search `Developer mode`
+- Turn on `Developer Mode`
+- Open a new terminal input:
+    ```bash
+    npm install
+    npm run make:exe
+    ```
+- in `.\dist` you can find the exe file. Click to install.
+
+
+
 ## Security Model (Clean Wrapper)
 
 Implemented in `main.js`:
@@ -59,20 +84,3 @@ Implemented in `main.js`:
 
 The window uses a persistent Electron partition: `persist:web2desktop`.
 Cookies/session data are stored on disk under Electron `userData`, so login survives app restarts.
-
-## Build
-
-Before build don't forget to change the desktop's `name`, `build.appId`, `build.productName` in `package.json`.
-Relpace the `/assets/icon.png` to your own `icon.png`
-
-1. Linux: create `.deb`
-```bash
-npm run make
-sudo apt install ./dist/*.deb
-```
-
-2. Windows: create `.exe`
-
-```bash
-npm run make:exe
-```
